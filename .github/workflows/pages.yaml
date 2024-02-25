@@ -23,6 +23,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
+      # Keeping this at start so that rest of the changes of clone do not increase the search time of find
+      - name: Github Pages Deployment Base Url change
+        run: |
+          find . -type f -not -path '*/\.*' -exec sed -i'' -e "s/{{ *GITHUB_USERNAME *}}/$GITHUB_ACTOR/g" -e "s/{{ *GITHUB_REPONAME *}}/$(basename $GITHUB_REPOSITORY)/g" {} +
+
       - name: Install tokei
         run: |
           rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
@@ -48,7 +53,6 @@ jobs:
         run: |
           python scripts/minimize.py
 
-
       - name: Remove scripts before pushing to pages branch
         run: |
           rm -rf scripts 
@@ -67,5 +71,6 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com' && \
           CURRENT_DATE=$(date +"%Y-%m-%d %T")
           git add data langs
+          git add -u
           git commit --no-verify --signoff --author "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>" -m "Update Kernal Info: Auto commit - $CURRENT_DATE"
           git push origin main:pages --atomic --force
