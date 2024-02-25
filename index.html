@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Tokei</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-gray-200 to-gray-300 p-8 text-center">
+    <div>
+        <h1 class="text-4xl font-extrabold text-gray-800">Tokei CLI Output</h1>
+        <p class="text-lg text-gray-600 mt-4">Let's see what Linux is made of</p>
+    </div>
+    <div x-data="{ data: null }" x-init="fetch('/data/minimized_output.json').then(response => response.json()).then(info => data = info)">
+        <template x-if="data != null">
+            <table class="mt-8 w-full border-collapse border border-gray-800">
+                <thead>
+                    <tr class="bg-gray-300 text-gray-700">
+                        <template x-for="key in Object.keys(data[0])" :key="key">
+                            <th class="py-2 px-4" x-text="key"></th>
+                        </template>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template x-for="row in data" :key="row['lang']">
+                        <tr class="border-t border-gray-800" x-init="console.log(data)">
+                            <template x-for="(value, name) in row" :key="name">
+                                <td class="py-2 px-4" x-text="value"></td>
+                            </template>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+    </div>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+</body>
+</html>

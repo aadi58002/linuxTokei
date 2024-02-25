@@ -1,0 +1,71 @@
+name: Update Page
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron:  '0 0,12 * * *'
+
+env: 
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build_and_test:
+    name: Rust project - latest
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain:
+          - stable
+          #- beta
+          #- nightly
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Install tokei
+        run: |
+          rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+          cargo install tokei
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Clone kernel Source code
+        uses: actions/checkout@v4
+        with:
+          repository: torvalds/linux
+          path: linux
+
+      - name: tokei counting
+        run: |
+          mkdir data
+          tokei linux --output json > data/complete_output.json
+
+      - name: Split output json
+        run: |
+          python scripts/minimize.py
+
+
+      - name: Remove scripts before pushing to pages branch
+        run: |
+          rm -rf scripts 
+
+      - name: Modify .gitignore
+        run: |
+          # Remove specific entries from .gitignore
+          sed -i '/langs/d' .gitignore
+          sed -i '/data/d' .gitignore
+
+      - name: Deploy to pages branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name 'github-actions[bot]' && \
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com' && \
+          CURRENT_DATE=$(date +"%Y-%m-%d %T")
+          git add data langs
+          git commit --no-verify --signoff --author "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>" -m "Update Kernal Info: Auto commit - $CURRENT_DATE"
+          git push origin main:pages --atomic --force
