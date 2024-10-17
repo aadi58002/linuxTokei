@@ -1,0 +1,1 @@
+{'blanks': 2, 'children': {}, 'code': 6, 'comments': 5, 'inaccurate': False, 'reports': [{'name': 'linux/tools/testing/kunit/mypy.ini', 'stats': {'blanks': 1, 'blobs': {}, 'code': 3, 'comments': 2}}, {'name': 'linux/scripts/kconfig/tests/pytest.ini', 'stats': {'blanks': 1, 'blobs': {}, 'code': 3, 'comments': 3}}]}

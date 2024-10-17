@@ -1,0 +1,1 @@
+{'blanks': 1, 'children': {}, 'code': 2, 'comments': 9, 'inaccurate': False, 'reports': [{'name': 'linux/.rustfmt.toml', 'stats': {'blanks': 1, 'blobs': {}, 'code': 2, 'comments': 9}}]}
