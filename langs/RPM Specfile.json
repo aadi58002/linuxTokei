@@ -1,0 +1,1 @@
+{'blanks': 18, 'children': {}, 'code': 111, 'comments': 2, 'inaccurate': False, 'reports': [{'name': 'linux/scripts/package/kernel.spec', 'stats': {'blanks': 18, 'blobs': {}, 'code': 111, 'comments': 2}}]}
