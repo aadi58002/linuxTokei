@@ -1,0 +1,1 @@
+{'blanks': 20, 'code': 137, 'comments': 0, 'reports': [{'stats': {'blanks': 20, 'code': 128, 'comments': 0, 'blobs': {}}, 'name': 'linux/tools/memory-model/linux-kernel.def'}, {'stats': {'blanks': 0, 'code': 9, 'comments': 0, 'blobs': {}}, 'name': 'linux/tools/power/cpupower/utils/idle_monitor/idle_monitors.def'}], 'children': {}, 'inaccurate': False}
