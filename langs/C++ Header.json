@@ -1,0 +1,1 @@
+{'blanks': 11, 'code': 59, 'comments': 55, 'reports': [{'stats': {'blanks': 6, 'code': 37, 'comments': 31, 'blobs': {}}, 'name': 'linux/arch/arm/nwfpe/fpmodule.inl'}, {'stats': {'blanks': 5, 'code': 22, 'comments': 24, 'blobs': {}}, 'name': 'linux/arch/arm/nwfpe/fpa11.inl'}], 'children': {}, 'inaccurate': False}
