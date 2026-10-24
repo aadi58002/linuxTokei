@@ -12,7 +12,7 @@
          <p class="text-lg text-gray-600 mt-4">Let's see what Linux is made of</p>
       </div>
       <div x-data="{ data: null }"
-         x-init="const baseUrl = (window.location.hostname === '{{GITHUB_USERNAME}}.github.io') ? '/{{GITHUB_REPONAME}}' : '';
+         x-init="const baseUrl = (window.location.hostname === 'aadi58002.github.io') ? '/linuxTokei' : '';
                  fetch(`${baseUrl}/data/minimized_output.json`)
                     .then(response => response.json())
                     .then(info => data = info);">
