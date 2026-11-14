@@ -1,0 +1,1 @@
+{'blanks': 17, 'code': 72, 'comments': 0, 'reports': [{'stats': {'blanks': 17, 'code': 72, 'comments': 0, 'blobs': {}}, 'name': 'linux/tools/testing/selftests/cgroup/memcg_protection.m'}], 'children': {}, 'inaccurate': False}
