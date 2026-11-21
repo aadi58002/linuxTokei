@@ -1,0 +1,1 @@
+{'blanks': 2, 'code': 7, 'comments': 10, 'reports': [{'stats': {'blanks': 1, 'code': 4, 'comments': 5, 'blobs': {}}, 'name': 'linux/drivers/gpu/drm/amd/display/dc/core2/CMakeLists.txt'}, {'stats': {'blanks': 1, 'code': 3, 'comments': 5, 'blobs': {}}, 'name': 'linux/drivers/gpu/drm/amd/display/dc/dc_api_dispatch/CMakeLists.txt'}], 'children': {}, 'inaccurate': False}
